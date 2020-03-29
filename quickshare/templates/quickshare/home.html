@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>QuickShare</title>
+    </head>
+    <body>
+        <h2 style="font-family:Arial; padding-left:20px; color: #2874a6 ">QuickShare</h2>
+        <h5 style="font-family:Arial; padding-left:40px; color: powderblue ">{{os}} &#8729&#8729&#8729 {{device}}</h2>
+        <br>
+        <form method="POST" class="post-form">{% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="save btn btn-default">Upload</button>
+        </form>
+        {% for c in cards %}
+            <div className="section">
+                <h4 style="font-family:Arial; padding-left:30px">{{c.header}}</h4>
+                <h5 style="font-family:Arial; padding-left:30px">{{c.sender}}</h5>
+                <p style="font-family:Arial; padding-left:30px">{{c.text}}<p>
+                <p style="font-family:Arial; padding-left:30px">{{c.created_date}}</p>
+                <br>
+            </div>
+        {% endfor %}
+        <p style="font-family:Arial; padding-left:30px">{{os}} {{device}}<p>
+    </body>
+</html>
