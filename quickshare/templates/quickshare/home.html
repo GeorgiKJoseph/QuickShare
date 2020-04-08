@@ -2,21 +2,37 @@
 <html>
     <head>
         <title>QuickShare</title>
+        <style>
+            .section {
+                width: 70%;
+                margin: 0 auto;
+                padding: 20px;
+            }
+        </style>
     </head>
-    <body>
-        <h2 style="font-family:Arial; padding-left:20px; color: #2874a6 ">QuickShare</h2>
+    <body class="section">
+        <h2 style="font-family:Arial; padding-left:20px; color: #2874a6 ;text-align: center;">QuickShare</h2>
         <h5 style="font-family:Arial; padding-left:40px; color: powderblue ">{{os}} &#8729&#8729&#8729 {{device}}</h2>
         <br>
-        <form method="POST" class="post-form">{% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="save btn btn-default">Upload</button>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label>Header: </label>
+            <input type="text" name="header" required><br>
+            <label>Text  : </label>
+            <textarea rows="6" cols="60" name="text" placeholder="Talk to me.."></textarea><br>
+            <label>File : </label>
+            <input type="file" name="fil"><br>
+            <button type="submit">Upload</button>
         </form>
         {% for c in cards %}
-            <div className="section">
-                <h4 style="font-family:Arial; padding-left:30px">{{c.header}}</h4>
-                <h5 style="font-family:Arial; padding-left:30px">{{c.sender}}</h5>
-                <p style="font-family:Arial; padding-left:30px">{{c.text}}<p>
-                <p style="font-family:Arial; padding-left:30px">{{c.created_date}}</p>
+            <div class="section">
+                <h4>
+                    <span style="font-family:Arial; padding-left:30px;text-transform: uppercase; font-weight:bold;"> {{c.header}}</span>
+                    <span style="font-family:Arial; padding-left:30px; ">{{c.created_date|timesince}}</span>
+                </h4>
+                <h5 style="font-family:Arial; padding-left:30px; color: #2874a6;">&#8729&#8729&#8729&#8729&#8729&#8729{{c.sender}}</h5>
+                <p style="font-family:Arial; padding-left:30px"><pre>{{c.text}}</pre><p>
+                <p style="font-family:Arial; padding-left:30px"></p>
                 <br>
             </div>
         {% endfor %}
