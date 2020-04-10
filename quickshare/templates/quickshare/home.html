@@ -8,6 +8,14 @@
                 margin: 0 auto;
                 padding: 20px;
             }
+            p {
+                font-family:Arial;
+                padding-left:30px;
+            }
+            a {
+                padding-left: 20px;
+                font-family:Arial; 
+            }
         </style>
     </head>
     <body class="section">
@@ -21,9 +29,10 @@
             <label>Text  : </label>
             <textarea rows="6" cols="60" name="text" placeholder="Talk to me.."></textarea><br>
             <label>File : </label>
-            <input type="file" name="fil"><br>
+            <input type="file" name="attachment" multiple="" ><br>
             <button type="submit">Upload</button>
         </form>
+        
         {% for c in cards %}
             <div class="section">
                 <h4>
@@ -31,8 +40,14 @@
                     <span style="font-family:Arial; padding-left:30px; ">{{c.created_date|timesince}}</span>
                 </h4>
                 <h5 style="font-family:Arial; padding-left:30px; color: #2874a6;">&#8729&#8729&#8729&#8729&#8729&#8729{{c.sender}}</h5>
-                <p style="font-family:Arial; padding-left:30px"><pre>{{c.text}}</pre><p>
-                <p style="font-family:Arial; padding-left:30px"></p>
+                <p><pre>{{c.text}}</pre><p>
+                {% if c.attachments %}
+                    <h4 style="font-family:Arial;">Attachments</h4>
+                {% endif %}
+                {% for x in c.attachments %}
+                    <a href="{% url 'download' pk=c.pk fname=x %}">{{ x }}</a>
+                {% endfor %}
+                 
                 <br>
             </div>
         {% endfor %}

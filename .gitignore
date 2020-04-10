@@ -4,5 +4,7 @@ __pycache__
 env
 /.vscode
 db.sqlite3
+media
 /static
+quickshare/migrations
 .DS_Store
