@@ -1,0 +1,191 @@
+h1, h2, h3, h4, h5, p, a {
+    font-family: 'Open Sans', sans-serif; 
+}
+body {
+    background-color: #F5F5F5;
+}
+.app_title {
+    color: #1B1B1B;
+    opacity: 0.8;
+    font-size: 40px;
+    font-family: 'Open Sans', sans-serif; 
+    font-weight: 600;
+    padding: 20px 10px 0px 80px ;
+}
+.app_subtitle{
+    z-index: 30;
+    padding-left: 220px;
+    position: fixed;
+}
+.app_subtitle_on {
+    font-family: 'Open Sans', sans-serif; 
+    font-size: 12px;
+    opacity: 0.3;
+}
+.app_subtitle_os {
+    font-family: 'Open Sans', sans-serif; 
+    opacity: 0.7;
+}
+
+.section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.upload_section {
+    width: 40%;
+    float: left;
+    text-align: center;
+    padding: 30px 0px 0px 0px;
+    position: fixed;
+}
+.upload_section_mimic {
+    width: 40%;
+    float: left;
+    text-align: center;
+    padding: 30px 0px 0px 0px;
+}
+.header {
+    width: 90%;
+    height: 30px;
+    padding: 25px 0px 25px 20px;
+}
+.text {
+    width: 90%;
+    height: 300px;
+    margin: auto;
+    background-color: #f8f8f8;
+    padding: 20px 0px 0px 20px;
+    box-sizing: border-box;
+    border: 1px solid #1B1B1B;
+}
+.attachment {
+    padding-left: 30px;
+}
+.attachment_name {
+    font-family: 'Open Sans', sans-serif; 
+    width: 20%;
+    float: left;
+    font-size: 20px;
+    opacity: 0.7;
+}
+.attachment_button {
+    width: 80%;
+    float: left;
+	opacity: 0.5;
+    overflow: hidden;
+    position: relative;
+}
+.form_upload_button {
+    padding: 3px;
+    background-color: #1B1B1B;
+    opacity: 0.9;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+}
+.form_upload_button:hover{
+    opacity: 1;
+}
+.content_section{
+    width: 60%;
+    float: left;
+    text-align: center;
+}
+.content_cards{
+    margin-top: 10px;
+    text-align: left;
+    /*padding-left: 30px; */
+    border: 1px solid #1B1B1B;
+    font-family: 'Open Sans', sans-serif; 
+    margin-bottom: 10px;
+}
+.card_header {
+    font-weight: bolder;
+    font-size: 20px;
+    width: 40%;
+    text-align: left;
+    float: left;
+    padding-left: 7%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow: hidden;
+}
+.card_created_date {
+    width: 50%;
+    float: left;
+    text-align: center;
+    opacity: 0.5;
+    font-size: 15px;
+    font-weight: bold;
+    padding-top: 25px;
+}
+.card_body {
+    border: 1px solid white;
+}
+.card_text {
+    width: 100%;
+    height: 300px;
+    margin: auto;
+    background-color: white;
+    padding: 20px 4% 0px 4%;
+    border: 0px solid #f8f8f8;
+    outline: none;
+    font-family: 'Open Sans', sans-serif; 
+}
+.card_attch_block {
+    width: 100%;
+    background-color: white;
+}
+.card_attch_title {
+    font-family: 'Open Sans', sans-serif; 
+    font-size: 15;
+    font-weight: bold;
+    opacity: 0.7;
+    padding: 10px 0px 0px 5%;
+    width: 30%;
+}
+
+.card_attch_links {
+    width: 50%;
+    font-family: 'Open Sans', sans-serif; 
+    font-style: italic;
+    opacity: 0.5;
+    padding-left: 15%; 
+}
+.card_attch_links a {
+    color: #1B1B1B;
+}
+.card_attch_links:hover {
+    opacity: 0.8;
+}
+@media (max-width: 1080px) {
+    .upload_section, .content_section {
+        width: 100%;
+        position: relative;
+    } 
+
+    .app_title {
+        padding: 10px 10px 0px 20px ;
+        font-size: 30px;
+        position: relative;
+    }
+    .app_subtitle {
+        padding-left: 100px;
+        position: relative;
+    }
+    .app_subtitle_on{
+        font-size: 12px;
+    }
+    .app_subtitle_os{
+        font-size: 13px;
+        font-weight: bold;
+        opacity: 0.6;
+    }
+
+}
+
+.bg {
+    opacity: 0.5;
+}

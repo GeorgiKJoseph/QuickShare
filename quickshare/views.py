@@ -31,10 +31,8 @@ def home(request):
 
     # display content
     cards = Card.objects.all().order_by('-created_date')
-    temp =''
     for x in cards:
         x.attachments = get_attachments(x)
-        print(x.attachments)
     rtn = {'form': form, 'os':OS,'device':device,'cards': cards}
     return render(request,'quickshare/home.html', rtn)
 

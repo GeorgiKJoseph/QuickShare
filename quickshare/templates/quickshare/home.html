@@ -1,56 +1,70 @@
-<!DOCTYPE html>
+{% load static %}
+
 <html>
     <head>
         <title>QuickShare</title>
-        <style>
-            .section {
-                width: 70%;
-                margin: 0 auto;
-                padding: 20px;
-            }
-            p {
-                font-family:Arial;
-                padding-left:30px;
-            }
-            a {
-                padding-left: 20px;
-                font-family:Arial; 
-            }
-        </style>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'js/base.js' %}">
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <body class="section">
-        <h2 style="font-family:Arial; padding-left:20px; color: #2874a6 ;text-align: center;">QuickShare</h2>
-        <h5 style="font-family:Arial; padding-left:40px; color: powderblue ">{{os}} &#8729&#8729&#8729 {{device}}</h2>
-        <br>
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <label>Header: </label>
-            <input type="text" name="header" required><br>
-            <label>Text  : </label>
-            <textarea rows="6" cols="60" name="text" placeholder="Talk to me.."></textarea><br>
-            <label>File : </label>
-            <input type="file" name="attachment" multiple="" ><br>
-            <button type="submit">Upload</button>
-        </form>
-        
-        {% for c in cards %}
-            <div class="section">
-                <h4>
-                    <span style="font-family:Arial; padding-left:30px;text-transform: uppercase; font-weight:bold;"> {{c.header}}</span>
-                    <span style="font-family:Arial; padding-left:30px; ">{{c.created_date|timesince}}</span>
-                </h4>
-                <h5 style="font-family:Arial; padding-left:30px; color: #2874a6;">&#8729&#8729&#8729&#8729&#8729&#8729{{c.sender}}</h5>
-                <p><pre>{{c.text}}</pre><p>
-                {% if c.attachments %}
-                    <h4 style="font-family:Arial;">Attachments</h4>
-                {% endif %}
-                {% for x in c.attachments %}
-                    <a href="{% url 'download' pk=c.pk fname=x %}">{{ x }}</a>
-                {% endfor %}
-                 
-                <br>
+    <body>
+        <div>
+            <div class="container app_title">QuickShare</div>
+            <div class="container app_subtitle">
+                <span class="app_subtitle_on"> on</span>
+                <span class="app_subtitle_os">{{os}}</span>
             </div>
-        {% endfor %}
-        <p style="font-family:Arial; padding-left:30px">{{os}} {{device}}<p>
+        </div>
+        <div class="section">
+            <div class="upload_section">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input class="header" type="text" name="header" placeholder="WTF is this" required><br>
+                    <textarea class="text" name="text" placeholder="Talk to me.."></textarea><br><br>
+                    <div class="attachment">
+                        <div class="attachment_name">
+                            <i class="fa fa-link" aria-hidden="true"></i>
+                        </div>
+                        <div class="attachment_button">
+                            <input type="file" name="attachment" multiple="" ><br>
+                        </div>
+                    </div>
+                    <br><br><br>
+                    <button class="form_upload_button" type="submit" >Upload</button>
+                </form>
+            </div>
+            <div class="upload_section_mimic">
+
+            </div>
+            <div class="content_section">
+                {% for c in cards %}
+                <div class="content_cards">
+                    <div class="card_header">
+                        {{ c.header }}
+                    </div>
+                    <div class="card_created_date">
+                        {{c.created_date|timesince}}
+                    </div>
+                    <div class="card_body">
+                        <div>
+                            <textarea class="card_text" readonly>{{c.text}}</textarea>
+                        </div>
+                        <div class="card_attch_block">
+                            {% if c.attachments %}
+                            <div class="card_attch_title">Attachments: </div>
+                            {% endif %}
+                            <div class="card_attch_links">
+                                {% for x in c.attachments %}
+                                <a href="{% url 'download' pk=c.pk fname=x %}">{{ x }}</a><br>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </body>
 </html>
