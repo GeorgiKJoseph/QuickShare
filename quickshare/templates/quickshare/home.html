@@ -4,28 +4,30 @@
     <head>
         <title>QuickShare</title>
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
-        <link rel="stylesheet" href="{% static 'js/base.js' %}">
+        <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" >
+            window.onload = app_subtitle_ani('{{os}}','{{device}}');
+        </script>
     </head>
     <body>
         <div>
             <div class="container app_title">QuickShare</div>
             <div class="container app_subtitle">
                 <span class="app_subtitle_on"> on</span>
-                <span class="app_subtitle_os">{{os}}</span>
+                <span id='subtitle' class="app_subtitle_os">{{os}}</span>
             </div>
         </div>
         <div class="section">
             <div class="upload_section">
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <input class="header" type="text" name="header" placeholder="WTF is this" required><br>
-                    <textarea class="text" name="text" placeholder="Talk to me.."></textarea><br><br>
+                    <input class="header" type="text" name="header" placeholder="W t f" required><br>
+                    <textarea class="text" name="text" placeholder="Talk to me.." required></textarea><br><br>
                     <div class="attachment">
                         <div class="attachment_name">
-                            <i class="fa fa-link" aria-hidden="true"></i>
+                            <img class="attachment_icon" width="25px" height="25px" src="/static/images/icon2.png">
                         </div>
                         <div class="attachment_button">
                             <input type="file" name="attachment" multiple="" ><br>
@@ -66,5 +68,14 @@
                 {% endfor %}
             </div>
         </div>
+        <div class="footer">
+            <div class="footer_link_github">
+                <a href="https://www.github.com/georgikjoseph/quickshare">Github</a>
+            </div>
+            <div class="footer_text">
+                &copy; QuickShare
+            </div>
+        </div>
     </body>
+
 </html>
